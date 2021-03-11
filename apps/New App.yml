@@ -52,7 +52,7 @@ appTemplate:
                 - confirmationMessage: null
                 - isFetching: false
                 - rawData: null
-                - queryTriggerDelay: '0'
+                - queryTriggerDelay: '2000'
                 - watchedParams: []
                 - enableErrorTransformer: false
                 - timestamp: 0
@@ -74,7 +74,7 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-03-11T02:35:41.733Z
-            updatedAt: 2021-03-11T07:58:28.534Z
+            updatedAt: 2021-03-11T08:03:07.764Z
       - state1:
           pluginTemplate:
             id: state1
@@ -169,7 +169,7 @@ appTemplate:
                 height: 1
                 width: 1
             createdAt: 2021-03-11T07:27:48.204Z
-            updatedAt: 2021-03-11T07:57:32.847Z
+            updatedAt: 2021-03-11T08:00:59.562Z
       - addResource:
           pluginTemplate:
             id: addResource
@@ -186,7 +186,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
                 - showFailureToaster: true
-                - query: 'state1.setValue(state1.value.concat([textinput1.value]))'
+                - query: |-
+                    state1.setValue(state1.value.concat([textinput1.value]))
+                    textinput1.setvalue("")
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: null
                 - privateParams: []
@@ -233,7 +235,7 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-03-11T07:28:01.335Z
-            updatedAt: 2021-03-11T07:28:40.053Z
+            updatedAt: 2021-03-11T08:01:06.488Z
       - container1:
           pluginTemplate:
             id: container1
@@ -258,7 +260,7 @@ appTemplate:
                 height: 9
                 width: 5
             createdAt: 2021-03-11T07:29:01.282Z
-            updatedAt: 2021-03-11T07:46:31.478Z
+            updatedAt: 2021-03-11T08:04:15.740Z
       - text1:
           pluginTemplate:
             id: text1
@@ -406,7 +408,7 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2021-03-11T07:32:20.820Z
-            updatedAt: 2021-03-11T07:59:04.556Z
+            updatedAt: 2021-03-11T08:01:18.718Z
       - clear:
           pluginTemplate:
             id: clear
@@ -486,10 +488,10 @@ appTemplate:
                 - scrollOverflow: false
                 - tooltipText: ''
                 - value: |-
-                    ## Template
 
-                    <br>
-                    {{ print_resource_template.data.stdOut}}
+
+
+                    ```{{ print_resource_template.data.stdOut}}```
                 - renderAsHtml: true
                 - backgroundColor: '#0000'
                 - textColor: '#312929'
@@ -499,12 +501,11 @@ appTemplate:
               ordered: []
             position2:
               position2:
-                row: 3
-                col: 6
-                height: 9
-                width: 5
+                container: container3
+                height: 24
+                width: 12
             createdAt: 2021-03-11T07:33:05.969Z
-            updatedAt: 2021-03-11T07:46:39.939Z
+            updatedAt: 2021-03-11T08:04:16.389Z
       - print_resource_template:
           pluginTemplate:
             id: print_resource_template
@@ -634,6 +635,85 @@ appTemplate:
                 - notificationDuration: ''
             createdAt: 2021-03-11T07:45:51.071Z
             updatedAt: 2021-03-11T07:46:12.838Z
+      - container2:
+          pluginTemplate:
+            id: container2
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - backgroundColor: white
+                - title: ''
+                - id: container2
+                - overflowType: visible
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 3
+                col: 5
+                height: 18
+                width: 7
+            createdAt: 2021-03-11T08:02:15.147Z
+            updatedAt: 2021-03-11T08:03:50.430Z
+      - text4:
+          pluginTemplate:
+            id: text4
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '## Resource Template'
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text4
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                height: 1
+                width: 8
+            createdAt: 2021-03-11T08:02:29.665Z
+            updatedAt: 2021-03-11T08:04:09.283Z
+      - container3:
+          pluginTemplate:
+            id: container3
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - backgroundColor: white
+                - title: ''
+                - id: container3
+                - overflowType: scroll
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container2
+                row: 1
+                height: 16
+                width: 12
+            createdAt: 2021-03-11T08:03:32.792Z
+            updatedAt: 2021-03-11T08:04:03.645Z
   urlFragmentDefinitions: []
   appThemeId: null
   preloadedAppJavaScript: null
