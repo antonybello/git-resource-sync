@@ -3,28 +3,23 @@ pageUuid: 78afc662-8212-11eb-bc9f-f7a5d910b894
 appTemplate:
   plugins:
     ordered:
-      - query1:
+      - move_to_directory:
           pluginTemplate:
-            id: query1
+            id: move_to_directory
             type: datasource
-            subtype: RESTQuery
-            resourceName: REST-WithoutResource
+            subtype: ShellQuery
+            resourceName: c9c8c838-7b65-4114-99b1-9c5d8dc91be1
             template:
               ordered:
                 - queryRefreshTime: ''
-                - paginationLimit: ''
-                - body: ''
                 - queryDisabledMessage: ''
                 - successMessage: ''
                 - queryDisabled: ''
                 - playgroundQuerySaveId: 0
                 - resourceNameOverride: ''
-                - runWhenModelUpdates: true
-                - paginationPaginationField: ''
-                - headers: ''
+                - runWhenModelUpdates: false
                 - showFailureToaster: true
-                - paginationEnabled: false
-                - query: 'https://httpbin.org/get'
+                - query: 'cd ../ubuntu/dev/git-resource-sync && ls -a '
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: null
                 - privateParams: []
@@ -37,7 +32,6 @@ appTemplate:
                 - isImported: false
                 - showSuccessToaster: true
                 - cacheKeyTtl: ''
-                - cookies: ''
                 - metadata: null
                 - triggersOnFailure: []
                 - errorTransformer: >-
@@ -53,7 +47,6 @@ appTemplate:
                 - queryTriggerDelay: '0'
                 - watchedParams: []
                 - enableErrorTransformer: false
-                - paginationDataField: ''
                 - timestamp: 0
                 - importedQueryDefaults:
                     ordered: []
@@ -66,16 +59,506 @@ appTemplate:
                     row.quantity > 20)
 
                     return data
-                - queryTimeout: '10001'
+                - queryTimeout: '10000'
                 - requireConfirmation: false
-                - type: GET
                 - queryFailureConditions: ''
                 - enableCaching: false
-                - bodyType: json
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-03-11T02:35:41.733Z
-            updatedAt: 2021-03-11T02:35:41.733Z
+            updatedAt: 2021-03-11T06:36:04.000Z
+      - print_resource_template:
+          pluginTemplate:
+            id: print_resource_template
+            type: datasource
+            subtype: ShellQuery
+            resourceName: c9c8c838-7b65-4114-99b1-9c5d8dc91be1
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: cd ../ubuntu/dev/scripts && cat resource_template.yml
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-03-11T07:22:49.400Z
+            updatedAt: 2021-03-11T07:34:54.472Z
+      - state1:
+          pluginTemplate:
+            id: state1
+            type: state
+            subtype: State
+            template:
+              ordered:
+                - value: '[]'
+            createdAt: 2021-03-11T07:27:12.315Z
+            updatedAt: 2021-03-11T07:27:15.592Z
+      - textinput1:
+          pluginTemplate:
+            id: textinput1
+            type: widget
+            subtype: TextInputWidget
+            template:
+              ordered:
+                - validationMaxlengthValue: ''
+                - readonly: ''
+                - disabledKeyCodes: ''
+                - showNumberCommas: false
+                - validationMaxValue: ''
+                - onBlur: ''
+                - currencyType: USD
+                - leftIconName: ''
+                - initialValue: ''
+                - validationMessage: ''
+                - tooltipText: ''
+                - value: ''
+                - suffix: ''
+                - validationMinlengthValue: ''
+                - validationLengthValue: ''
+                - placeholder: Enter value
+                - validationType: ''
+                - label: Resource Name
+                - currencyMajorOnly: false
+                - formattedValue: ''
+                - allowedInputsRegex: ''
+                - labelMaxWidth: ''
+                - enableValidationType: false
+                - labelPlacedOnLeft: false
+                - onSubmit: ''
+                - validationMinValue: ''
+                - lastSubmittedAt: ''
+                - validationState:
+                    object:
+                      required: ''
+                      validationType: ''
+                - type: text
+                - id: textinput1
+                - allowedRegex: ''
+                - required: false
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 1
+                height: 2
+                width: 3
+            createdAt: 2021-03-11T07:27:31.684Z
+            updatedAt: 2021-03-11T07:27:37.157Z
+      - button1:
+          pluginTemplate:
+            id: button1
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Add
+                - exportQuery: ''
+                - action: addResource
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - id: button1
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 2
+                col: 3
+                height: 1
+                width: 1
+            createdAt: 2021-03-11T07:27:48.204Z
+            updatedAt: 2021-03-11T07:28:51.365Z
+      - addResource:
+          pluginTemplate:
+            id: addResource
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: 'state1.setValue(state1.value.concat([textinput1.value]))'
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-03-11T07:28:01.335Z
+            updatedAt: 2021-03-11T07:28:40.053Z
+      - container1:
+          pluginTemplate:
+            id: container1
+            type: widget
+            subtype: ContainerWidget
+            template:
+              ordered:
+                - heightType: fixed
+                - spinWhenChildrenAreFetching: true
+                - showBorder: true
+                - showDropShadow: true
+                - backgroundColor: white
+                - title: ''
+                - id: container1
+                - overflowType: visible
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 3
+                height: 9
+                width: 5
+            createdAt: 2021-03-11T07:29:01.282Z
+            updatedAt: 2021-03-11T07:32:40.301Z
+      - text1:
+          pluginTemplate:
+            id: text1
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '### Resources to be created'
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container1
+                height: 1
+                width: 8
+            createdAt: 2021-03-11T07:29:07.559Z
+            updatedAt: 2021-03-11T07:30:28.606Z
+      - listview1:
+          pluginTemplate:
+            id: listview1
+            type: widget
+            subtype: ListViewWidget
+            template:
+              ordered:
+                - data: ''
+                - instances: '{{ state1.value.length}}'
+                - itemHeight: '1'
+                - scroll: true
+                - showBorder: true
+                - showDropShadow: true
+                - dynamicHeightsEnabled: false
+                - id: listview1
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container1
+                row: 1
+                height: 6
+                width: 12
+            createdAt: 2021-03-11T07:30:09.971Z
+            updatedAt: 2021-03-11T07:30:53.078Z
+      - text2:
+          pluginTemplate:
+            id: text2
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: '### `{{ state1.value[i]}}`'
+                - renderAsHtml: false
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text2
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: listview1
+                height: 1
+                width: 12
+            createdAt: 2021-03-11T07:30:37.437Z
+            updatedAt: 2021-03-11T07:31:05.616Z
+      - button2:
+          pluginTemplate:
+            id: button2
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#3c92dc'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Bulk generate resources
+                - exportQuery: ''
+                - action: ''
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - id: button2
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container1
+                row: 7
+                col: 7
+                height: 1
+                width: 5
+            createdAt: 2021-03-11T07:31:19.611Z
+            updatedAt: 2021-03-11T07:32:32.920Z
+      - button3:
+          pluginTemplate:
+            id: button3
+            type: widget
+            subtype: ButtonWidget
+            template:
+              ordered:
+                - valueToCopy: ''
+                - color: '#555555'
+                - internalUrlHashParams: ''
+                - exportFileType: csv
+                - buttonType: action
+                - exportTemplate: null
+                - url: ''
+                - newWindow: false
+                - value: Clear
+                - exportQuery: ''
+                - action: clear
+                - internalUrlQuery: ''
+                - internalUrlPath: ''
+                - id: button3
+                - exportFileName: ''
+                - loading: ''
+                - disabled: ''
+            style:
+              ordered: []
+            position2:
+              position2:
+                container: container1
+                row: 7
+                height: 1
+                width: 3
+            createdAt: 2021-03-11T07:32:20.820Z
+            updatedAt: 2021-03-11T07:33:55.439Z
+      - clear:
+          pluginTemplate:
+            id: clear
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: 'state1.setValue([])'
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-03-11T07:32:44.951Z
+            updatedAt: 2021-03-11T07:32:51.125Z
+      - text3:
+          pluginTemplate:
+            id: text3
+            type: widget
+            subtype: TextWidget
+            template:
+              ordered:
+                - horizontalAlign: left
+                - truncateOverflow: false
+                - verticalAlign: center
+                - scrollOverflow: false
+                - tooltipText: ''
+                - value: |-
+                    ## Template
+
+                    <br>
+                    {{ print_resource_template.data.stdOut}}
+                - renderAsHtml: true
+                - backgroundColor: '#0000'
+                - textColor: '#312929'
+                - renderAsMarkdown: true
+                - id: text3
+            style:
+              ordered: []
+            position2:
+              position2:
+                row: 3
+                col: 6
+                height: 9
+                width: 5
+            createdAt: 2021-03-11T07:33:05.969Z
+            updatedAt: 2021-03-11T07:33:50.863Z
   urlFragmentDefinitions: []
   appThemeId: null
   preloadedAppJavaScript: null
