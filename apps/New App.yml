@@ -29,7 +29,9 @@ appTemplate:
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: null
                 - privateParams: []
-                - triggersOnSuccess: []
+                - triggersOnSuccess:
+                    - goToResources
+                    - clear
                 - runWhenPageLoadsDelay: ''
                 - data: null
                 - importedQueryInputs:
@@ -72,7 +74,7 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-03-11T02:35:41.733Z
-            updatedAt: 2021-03-11T07:53:14.095Z
+            updatedAt: 2021-03-11T07:58:28.534Z
       - state1:
           pluginTemplate:
             id: state1
@@ -167,7 +169,7 @@ appTemplate:
                 height: 1
                 width: 1
             createdAt: 2021-03-11T07:27:48.204Z
-            updatedAt: 2021-03-11T07:49:00.096Z
+            updatedAt: 2021-03-11T07:57:32.847Z
       - addResource:
           pluginTemplate:
             id: addResource
@@ -404,7 +406,7 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2021-03-11T07:32:20.820Z
-            updatedAt: 2021-03-11T07:46:26.346Z
+            updatedAt: 2021-03-11T07:59:04.556Z
       - clear:
           pluginTemplate:
             id: clear
@@ -421,7 +423,9 @@ appTemplate:
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
                 - showFailureToaster: true
-                - query: 'state1.setValue([])'
+                - query: |-
+                    state1.setValue([])
+                    textinput1.setValue("")
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: null
                 - privateParams: []
@@ -468,7 +472,7 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-03-11T07:32:44.951Z
-            updatedAt: 2021-03-11T07:32:51.125Z
+            updatedAt: 2021-03-11T07:59:01.719Z
       - text3:
           pluginTemplate:
             id: text3
@@ -565,9 +569,9 @@ appTemplate:
                 - notificationDuration: ''
             createdAt: 2021-03-11T07:42:25.322Z
             updatedAt: 2021-03-11T07:47:05.620Z
-      - query5:
+      - goToResources:
           pluginTemplate:
-            id: query5
+            id: goToResources
             type: datasource
             subtype: JavascriptQuery
             resourceName: JavascriptQuery
