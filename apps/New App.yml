@@ -3,12 +3,12 @@ pageUuid: 78afc662-8212-11eb-bc9f-f7a5d910b894
 appTemplate:
   plugins:
     ordered:
-      - move_to_directory:
+      - generate_resources:
           pluginTemplate:
-            id: move_to_directory
+            id: generate_resources
             type: datasource
             subtype: ShellQuery
-            resourceName: c9c8c838-7b65-4114-99b1-9c5d8dc91be1
+            resourceName: 3c783985-c44a-4895-82e7-5e380193112d
             template:
               ordered:
                 - queryRefreshTime: ''
@@ -19,7 +19,13 @@ appTemplate:
                 - resourceNameOverride: ''
                 - runWhenModelUpdates: false
                 - showFailureToaster: true
-                - query: 'cd ../ubuntu/dev/scripts '
+                - query: >-
+                    cd ../ubuntu/dev/scripts && python create_resources.py
+                    {{state1.value.join()}} && cd ../git-resource-sync && git
+                    config --global user.email "antony.bello@pomona.edu" && git
+                    config --global user.name "Antony Bello" && git add -A &&
+                    git commit -m "Create new resources from template" && git
+                    push origin master
                 - playgroundQueryUuid: ''
                 - playgroundQueryId: null
                 - privateParams: []
@@ -66,7 +72,7 @@ appTemplate:
                 - queryThrottleTime: '750'
                 - notificationDuration: ''
             createdAt: 2021-03-11T02:35:41.733Z
-            updatedAt: 2021-03-11T07:36:19.199Z
+            updatedAt: 2021-03-11T07:53:14.095Z
       - state1:
           pluginTemplate:
             id: state1
@@ -161,7 +167,7 @@ appTemplate:
                 height: 1
                 width: 1
             createdAt: 2021-03-11T07:27:48.204Z
-            updatedAt: 2021-03-11T07:28:51.365Z
+            updatedAt: 2021-03-11T07:49:00.096Z
       - addResource:
           pluginTemplate:
             id: addResource
@@ -250,7 +256,7 @@ appTemplate:
                 height: 9
                 width: 5
             createdAt: 2021-03-11T07:29:01.282Z
-            updatedAt: 2021-03-11T07:32:40.301Z
+            updatedAt: 2021-03-11T07:46:31.478Z
       - text1:
           pluginTemplate:
             id: text1
@@ -329,7 +335,7 @@ appTemplate:
                 height: 1
                 width: 12
             createdAt: 2021-03-11T07:30:37.437Z
-            updatedAt: 2021-03-11T07:31:05.616Z
+            updatedAt: 2021-03-11T07:41:58.125Z
       - button2:
           pluginTemplate:
             id: button2
@@ -347,7 +353,7 @@ appTemplate:
                 - newWindow: false
                 - value: Bulk generate resources
                 - exportQuery: ''
-                - action: ''
+                - action: generate_resources
                 - internalUrlQuery: ''
                 - internalUrlPath: ''
                 - id: button2
@@ -364,7 +370,7 @@ appTemplate:
                 height: 1
                 width: 5
             createdAt: 2021-03-11T07:31:19.611Z
-            updatedAt: 2021-03-11T07:32:32.920Z
+            updatedAt: 2021-03-11T07:48:48.244Z
       - button3:
           pluginTemplate:
             id: button3
@@ -398,7 +404,7 @@ appTemplate:
                 height: 1
                 width: 3
             createdAt: 2021-03-11T07:32:20.820Z
-            updatedAt: 2021-03-11T07:33:55.439Z
+            updatedAt: 2021-03-11T07:46:26.346Z
       - clear:
           pluginTemplate:
             id: clear
@@ -494,7 +500,136 @@ appTemplate:
                 height: 9
                 width: 5
             createdAt: 2021-03-11T07:33:05.969Z
-            updatedAt: 2021-03-11T07:33:50.863Z
+            updatedAt: 2021-03-11T07:46:39.939Z
+      - print_resource_template:
+          pluginTemplate:
+            id: print_resource_template
+            type: datasource
+            subtype: ShellQuery
+            resourceName: 3c783985-c44a-4895-82e7-5e380193112d
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: cd ../ubuntu/dev/scripts &&  cat resource_template.yml
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: true
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-03-11T07:42:25.322Z
+            updatedAt: 2021-03-11T07:47:05.620Z
+      - query5:
+          pluginTemplate:
+            id: query5
+            type: datasource
+            subtype: JavascriptQuery
+            resourceName: JavascriptQuery
+            template:
+              ordered:
+                - queryRefreshTime: ''
+                - queryDisabledMessage: ''
+                - successMessage: ''
+                - queryDisabled: ''
+                - playgroundQuerySaveId: 0
+                - resourceNameOverride: ''
+                - runWhenModelUpdates: false
+                - showFailureToaster: true
+                - query: >-
+                    utils.openUrl('http://ec2-54-244-45-22.us-west-2.compute.amazonaws.com:3000/resources')
+                - playgroundQueryUuid: ''
+                - playgroundQueryId: null
+                - privateParams: []
+                - triggersOnSuccess: []
+                - runWhenPageLoadsDelay: ''
+                - data: null
+                - importedQueryInputs:
+                    ordered: []
+                - showSuccessConfetti: false
+                - isImported: false
+                - showSuccessToaster: true
+                - cacheKeyTtl: ''
+                - metadata: null
+                - triggersOnFailure: []
+                - errorTransformer: >-
+                    // The variable 'data' allows you to reference the request's
+                    data in the transformer. 
+
+                    // example: return data.find(element => element.isError)
+
+                    return data.error
+                - confirmationMessage: null
+                - isFetching: false
+                - rawData: null
+                - queryTriggerDelay: '0'
+                - watchedParams: []
+                - enableErrorTransformer: false
+                - timestamp: 0
+                - importedQueryDefaults:
+                    ordered: []
+                - enableTransformer: false
+                - runWhenPageLoads: false
+                - transformer: >-
+                    // type your code here
+
+                    // example: return formatDataAsArray(data).filter(row =>
+                    row.quantity > 20)
+
+                    return data
+                - queryTimeout: '10000'
+                - requireConfirmation: false
+                - queryFailureConditions: ''
+                - enableCaching: false
+                - queryThrottleTime: '750'
+                - notificationDuration: ''
+            createdAt: 2021-03-11T07:45:51.071Z
+            updatedAt: 2021-03-11T07:46:12.838Z
   urlFragmentDefinitions: []
   appThemeId: null
   preloadedAppJavaScript: null
